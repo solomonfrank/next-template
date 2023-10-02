@@ -1,6 +1,13 @@
+const { i18n } = require("./next-i18next.config");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+  // https://www.i18next.com/overview/configuration-options#logging
 
-module.exports = nextConfig
+  reactStrictMode: true,
+  i18n: {
+    ...i18n,
+    localeDetection: true,
+  },
+};
+
+module.exports = nextConfig;

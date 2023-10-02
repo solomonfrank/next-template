@@ -1,6 +1,9 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppPropsWithLayout } from "@/libs/app-provider";
+import "@/styles/globals.css";
+import { appWithTranslation } from "next-i18next";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  return <Component {...pageProps} />;
 }
+
+export default appWithTranslation(MyApp);
