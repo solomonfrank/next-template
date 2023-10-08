@@ -2,6 +2,7 @@ import { classNames } from "@/libs/classNames";
 import { forwardRef, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Label } from "./Label";
+import { ErrorMessage } from "./ErrorMessage";
 
 type Inputprops = {
   isFullwidth?: boolean;
@@ -20,7 +21,7 @@ type AddonProps = {
   error?: boolean;
 };
 
-const Addon = ({ isFilled, children, className, error }: AddonProps) => (
+const Addon = ({ children, className }: AddonProps) => (
   <div
     className={classNames(
       "flex items-center px-2  border-slate-300 py-3 min-h-9 ",
@@ -79,6 +80,7 @@ export const InputField = forwardRef<HTMLInputElement, Inputprops>(
             <Input isFullwidth={isFullwidth} {...otherProps} ref={ref} />
           </div>
         )}
+        <ErrorMessage fieldName={props.name || ""} />
       </div>
     );
   }
