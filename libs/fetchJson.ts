@@ -30,8 +30,10 @@ export const fetchJSON = async <JSON = unknown>(
     return data;
   }
 
+  console.log("Dayaaaa", data);
+
   throw new FetchError({
-    message: response.statusText,
+    message: data?.message ?? response.statusText,
     response,
     statusCode: response.status,
   });
