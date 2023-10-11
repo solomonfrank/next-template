@@ -43,6 +43,9 @@ export default async function handler(
   });
   console.log("createdUser", createdUser);
 
-  await sendVerificationEmail(email);
+  if (process.env.NODE_ENV === "production") {
+    await sendVerificationEmail(email);
+  }
+
   return res.status(201).json({ message: "User created successfully" });
 }

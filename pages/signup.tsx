@@ -1,4 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -11,11 +12,13 @@ import { BiLogoGoogle } from "react-icons/bi";
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 import { signupSchema } from "@/utils/schema";
-import { fetchJSON } from "@/libs/fetchJson";
+import { FetchError, fetchJSON } from "@/libs/fetchJson";
 
 type FormData = z.infer<typeof signupSchema>;
 
 const Signup = () => {
+  const [response, setResponse] = useState("");
+  const [errorEesponse, setErrorResponse] = useState("");
   const methods = useForm<FormData>({
     resolver: zodResolver(signupSchema),
     mode: "onChange",
@@ -29,19 +32,27 @@ const Signup = () => {
   } = methods;
 
   const onSubmit = async (data: FormData) => {
-    console.log("formdata", data);
     try {
-      const response = await fetchJSON("/api/auth/signup", {
-        method: "post",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetchJSON<{ message: string }>(
+        "/api/auth/signup",
+        {
+          method: "post",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      console.log("responseresponse", response);
+      setResponse(response?.message);
     } catch (ex) {
-      console.log("exxxx", ex);
+      if (ex instanceof FetchError) {
+        setErrorResponse(ex.message);
+        //  methods.setError("email", { message: ex.message });
+        return;
+      }
+
+      setErrorResponse("Something went wrong");
     }
   };
   return (
@@ -56,6 +67,16 @@ const Signup = () => {
           Signup
         </h3>
         <div className="mb-5">
+          {response && (
+            <div className="bg-green-500 py-2 text-center block w-full">
+              {response}
+            </div>
+          )}
+          {errorEesponse && (
+            <div className="bg-white border rounded-md border-red-700 text-red-700 py-1 mb-2 text-center block w-full">
+              {errorEesponse}
+            </div>
+          )}
           <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-6">
