@@ -1,7 +1,9 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/prisma";
+
 import { IdentityProvider } from "@/prisma/types/enum";
 import { verifyPassword } from "@/libs/hashPassword";
 
@@ -75,6 +77,30 @@ export const nextAuthOption: AuthOptions = {
       },
     }),
   ],
+  adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {},
+  pages: {
+    signIn: "/auth/login",
+    signOut: "/auth/logout",
+    error: "/auth/error", // Error code passed in query string as ?error=
+    verifyRequest: "/auth/verify-request", // (used for check email message)
+    //newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+  },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log("callback", {
+        user,
+        account,
+        profile,
+        email,
+        credentials,
+      });
+      return true;
+    },
+  },
 };
 
 export default NextAuth(nextAuthOption);
