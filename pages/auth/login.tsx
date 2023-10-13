@@ -105,7 +105,14 @@ const Login = () => {
           </p>
         </div>
         <div>
-          <Button type="button" prefixIcon={<BiLogoGoogle size={20} />}>
+          <Button
+            onClick={async (e) => {
+              e.preventDefault();
+              await signIn("google");
+            }}
+            type="button"
+            prefixIcon={<BiLogoGoogle size={20} />}
+          >
             Sign in with Google
           </Button>
         </div>
