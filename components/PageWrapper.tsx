@@ -1,4 +1,4 @@
-import { AppPropsWithLayout } from "@/libs/app-provider";
+import { AppPropsWithLayout, Approvider } from "@/libs/app-provider";
 import Head from "next/head";
 
 const PageWrapper = (props: AppPropsWithLayout) => {
@@ -6,7 +6,7 @@ const PageWrapper = (props: AppPropsWithLayout) => {
 
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
-    <section>
+    <Approvider {...props}>
       <Head>
         <meta
           name="viewpoint"
@@ -14,7 +14,7 @@ const PageWrapper = (props: AppPropsWithLayout) => {
         />
       </Head>
       <main>{getLayout(<Component {...pageProps} />, router)}</main>
-    </section>
+    </Approvider>
   );
 };
 
