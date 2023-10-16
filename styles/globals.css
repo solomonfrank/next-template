@@ -6,6 +6,30 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary-color: darkblue;
+}
+
+@layer base {
+
+  html {
+    @apply bg-background font-sans;
+    font-size: 62.5%;
+    --navigation-height: 4.8rem
+  }
+
+}
+
+@layer utilities {
+  .mask-hero {
+    background-image: linear-gradient(to right bottom, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.38));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .over-hero {
+    background-image:  radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))
+
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,3 +39,8 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+
+
+
+

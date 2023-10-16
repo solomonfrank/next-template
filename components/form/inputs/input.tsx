@@ -66,7 +66,7 @@ export const InputField = forwardRef<HTMLInputElement, Inputprops>(
         {label && <Label {...labelProps}>{label}</Label>}
 
         {prefixIcon || suffixIcon ? (
-          <div className="border border-slate-300 group  focus-within:ring-slate-900 flex  items-center justify-center rounded-md focus-within:outline-none focus-within:ring-2">
+          <div className="border transition-all border-slate-300 group  focus-within:ring-slate-900 flex  items-center justify-center rounded-md focus-within:outline-none focus-within:ring-2">
             {prefixIcon && (
               <Addon className={classNames("border-r-2")}>{prefixIcon}</Addon>
             )}

@@ -1,19 +1,43 @@
 import { classNames } from "@/libs/classNames";
 import Link, { LinkProps } from "next/link";
 import { forwardRef, createElement } from "react";
+import { cva, VariantProps } from "class-variance-authority";
 
-type ButtonProps = {
+type ButtonProps = VariantProps<typeof buttonClasses> & {
   prefixIcon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
   loading?: boolean;
   disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 } & (
-  | (Omit<JSX.IntrinsicElements["a"], "onClick" | "href" | "ref"> &
-      LinkProps & { type?: never })
-  | (Omit<JSX.IntrinsicElements["button"], "ref" | "disabled" | "onClick"> & {
-      href?: never;
-    })
+    | (Omit<JSX.IntrinsicElements["a"], "onClick" | "href" | "ref"> &
+        LinkProps & { type?: never })
+    | (Omit<JSX.IntrinsicElements["button"], "ref" | "disabled" | "onClick"> & {
+        href?: never;
+      })
+  );
+
+const buttonClasses = cva(
+  "inline-flex items-center rounded-md gap-2  text-md justify-center border border-slate-400 bg-white py-2 cursor-pointer",
+  {
+    variants: {
+      variant: {
+        primary: "bg-brand-primary-color",
+        secondary: "",
+        textiary: "",
+      },
+      size: {
+        small: "text-xs px-3 h-7",
+        medium: "text-sm px-4 h-8",
+        large: "text-md px-6 h-12",
+      },
+    },
+
+    defaultVariants: {
+      variant: "primary",
+      size: "medium",
+    },
+  }
 );
 
 export const Button = forwardRef<
@@ -25,6 +49,8 @@ export const Button = forwardRef<
     suffixIcon,
     loading,
     type = "button",
+    variant,
+    size,
     ...passThroughProps
   } = props;
 
@@ -38,10 +64,7 @@ export const Button = forwardRef<
       type: props.href ? undefined : type,
       disabled: disabled,
       ref,
-      className: classNames(
-        "w-full flex items-center  rounded-md gap-2  text-md justify-center border border-slate-400 bg-white py-2 cursor-pointer",
-        props.className
-      ),
+      className: classNames(buttonClasses({ variant, size }), props.className),
       onClick: disabled
         ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => e.preventDefault()
         : props.onClick,

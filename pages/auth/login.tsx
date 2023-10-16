@@ -41,7 +41,7 @@ const Login = () => {
       setErrorResponse("Internal Server error");
     }
     if (!response?.error) {
-      return router.push("/");
+      return router.push("/dashboard");
     }
 
     if (response?.error) {
@@ -67,6 +67,7 @@ const Login = () => {
               {errorEesponse}
             </div>
           )}
+
           <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-6">
