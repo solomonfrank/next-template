@@ -23,7 +23,8 @@ const buttonClasses = cva(
     variants: {
       variant: {
         primary: "bg-brand-primary-color",
-        secondary: "",
+        secondary:
+          "text-primary bg-white bg-opacity-10 border border-white-08 backdrop-filter-[12px] hover:bg-opacity-20 transition-colors ease-in-out ",
         textiary: "",
       },
       size: {
