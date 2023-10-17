@@ -8,11 +8,17 @@ const config: Config = {
   ],
   theme: {
     fontSize: {
-      xs: "1.3rem",
+      xs: ["1.3rem", "1.2"],
       sm: ["1.4rem", "1"],
       md: ["1.6rem", "1"],
-      lg: ["2.2rem", "1.3"],
-      "5xl": ["8rem", "1"],
+      lg: "1.8rem",
+      xl: ["2.2rem", "1.3"],
+      "2xl": "2.4rem",
+      "3xl": "2.6rem",
+      "4xl": "3.8rem",
+      "5xl": "4rem",
+      "6xl": ["4.2rem", "1"],
+      "8xl": ["8rem", "1"],
     },
     spacing: {
       0: "0",
@@ -59,6 +65,21 @@ const config: Config = {
           "linear-gradient(to right bottom, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.38))",
         subtleMask:
           "radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))",
+      },
+      keyframes: {
+        "fade-in": {
+          from: {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "none",
+          },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 1000ms var(--animation-delay, 0s) ease forwards",
       },
     },
   },

@@ -8,20 +8,15 @@ import { useTranslation } from "next-i18next";
 import Logo from "@/components/icons/Logo";
 import { Button } from "@/components/ui";
 import Container from "@/components/Container";
+import ForwardDirection from "@/components/icons/foward";
+import { CSSProperties } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { t } = useTranslation("common");
   return (
-    <div
-      className="relative min-h-screen w-full text-primary 
-    before:bg-subtleMask
-    before:min-h-screen
-    before:top-0
-     before:left-0 before:w-full before:absolute 
-     before:content-['']"
-    >
+    <div className="relative min-h-screen w-full text-primary">
       <header className="fixed w-full top-0 left-0  border-b border-white-08 h-[var(--navigation-height)] backdrop-blur-[12px] ">
         <Container className="h-full">
           <nav className="h-full flex items-center font-medium">
@@ -68,20 +63,45 @@ export default function Home() {
         </Container>
       </header>
 
-      <main className="pt-[var(--navigation-height)]">
-        <Container>
+      <main className="pt-[var(--navigation-height)] bg-subtleMask">
+        <Container className="pt-[6.4rem]">
+          <div className="text-center ">
+            <Button
+              variant="secondary"
+              size="small"
+              className="rounded-full"
+              // className=" px-3 h-7 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.1)] text-center backdrop-blur-[12px] text-primary border border-white-08"
+            >
+              Announcing our $35M Series B <ForwardDirection />
+            </Button>
+          </div>
+
           <div className="text-center">
-            <h1 className="text-5xl my-6 mask-hero font-medium">
+            <h1 className="text-8xl my-6 mask-hero font-medium animate-fade-in [--animation-delay:200ms] opacity-0 translate-y-[1rem]">
               Linear is a better way
               <br /> to build products
             </h1>
-            <p className="text-lg mb-12 text-[#b4bcc4]">
+            <p className="text-lg mb-12 text-[#b4bcc4] animate-fade-in [--animation-delay:400ms] opacity-0 translate-y-[1rem]">
               Meet the new standard for modern software development. <br />
               Streamline issues, sprints, and product roadmaps.
             </p>
           </div>
-          <div></div>
-          <Image src="/hero.webp" alt="hero image" width="1100" height="600" />
+          <div className="text-center text-xs font-medium backdrop-blur-[12px] animate-fade-in  [--animation-delay:600ms] opacity-0 translate-y-[1rem]">
+            <Button
+              variant="primary"
+              size="large"
+              className="rounded-full text-center backdrop-blur-[12px] text-primary border-0 border-[rgba(255,255, 255, 0.05)]"
+            >
+              Get Started <ForwardDirection />
+            </Button>
+          </div>
+          <Image
+            className="mt-[12.8rem]"
+            src="/hero.webp"
+            alt="hero image"
+            width="1100"
+            height="600"
+          />
         </Container>
       </main>
       <footer className="mt-12 py-9 border-t border-white-08">
@@ -99,7 +119,7 @@ export default function Home() {
 
             <div className="mt-auto">Social</div>
           </div>
-          <div className="flex">
+          <div className="flex hover:[&_a]:text-white [&_a]:transition-colors">
             <div className="min-w-[18rem] min-w-max-[100%] text-sm ">
               <h3 className="mb-[14px] text-secondary font-medium">Product</h3>
               <ul className="[&_li:not(:last-child)]:mb-[14px] [&_a]:text-textiary">
