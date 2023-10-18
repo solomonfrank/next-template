@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { GetServerSidePropsContext } from "next";
+import { useInView } from "react-intersection-observer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { i18n } from "@/next-i18next.config";
 import { useTranslation } from "next-i18next";
@@ -9,15 +10,20 @@ import Logo from "@/components/icons/Logo";
 import { Button } from "@/components/ui";
 import Container from "@/components/Container";
 import ForwardDirection from "@/components/icons/foward";
-import { CSSProperties } from "react";
+import { classNames } from "@/libs/classNames";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { t } = useTranslation("common");
+  const { ref, inView, entry } = useInView({
+    threshold: 0.4,
+    triggerOnce: true,
+  });
+
   return (
     <div className="relative min-h-screen w-full text-primary">
-      <header className="fixed w-full top-0 left-0  border-b border-white-08 h-[var(--navigation-height)] backdrop-blur-[12px] ">
+      <header className="fixed w-full top-0 left-0  border-b border-white-08 h-[var(--navigation-height)] backdrop-blur-[12px] z-10 ">
         <Container className="h-full">
           <nav className="h-full flex items-center font-medium">
             <div>
@@ -63,8 +69,8 @@ export default function Home() {
         </Container>
       </header>
 
-      <main className="pt-[var(--navigation-height)] bg-subtleMask">
-        <Container className="pt-[6.4rem]">
+      <main className="pt-[var(--navigation-height)] bg-subtleMask ">
+        <Container className="py-[6.4rem] ">
           <div className="text-center ">
             <Button
               variant="secondary"
@@ -95,13 +101,48 @@ export default function Home() {
               Get Started <ForwardDirection />
             </Button>
           </div>
-          <Image
-            className="mt-[12.8rem]"
-            src="/hero.webp"
-            alt="hero image"
-            width="1100"
-            height="600"
-          />
+
+          <div ref={ref} className="[perspective:2000px]  mt-[12.8rem]">
+            <div
+              className={classNames(
+                "relative bg-hero-gradient border border-white-08 bg-white bg-opacity-[0.01] rounded-lg",
+                inView ? "animate-rotate-out" : "[transform:rotationX(0)]",
+                "before:w-full before:h-full before:absolute before:bg-conic-hero-gradient before:[filter:blur(120px)]  before:opacity-0",
+                inView && "before:animate-glow-image"
+              )}
+              // className={`bg-hero-gradient border border-white-08 bg-white bg-opacity-[0.01] rounded-lg [transform:rotateX(${
+              //   inView ? 0 : "25deg"
+              // })] `}
+            >
+              <svg
+                width="100%"
+                viewBox="0 0 1499 778"
+                fill="none"
+                className={classNames(
+                  "absolute w-full h-full top-0 left-0",
+                  "[&_path]:stroke-white [&_path]:[stroke-opacity:0.2] [&_path]:[stroke-dasharray:1] [&_path]:[stroke-dashoffset:1]",
+                  inView && "[&_path]:animate-image-stroke"
+                )}
+              >
+                <path pathLength="1" d="M1500 72L220 72"></path>
+                <path pathLength="1" d="M1500 128L220 128"></path>
+                <path pathLength="1" d="M1500 189L220 189"></path>
+                <path pathLength="1" d="M220 777L220 1"></path>
+                <path pathLength="1" d="M538 777L538 128"></path>
+              </svg>
+              <Image
+                className={classNames(
+                  "z-10 relative transition-opacity delay-[600ms]",
+                  inView ? "opacity-100" : "opacity-0"
+                )}
+                src="/hero.webp"
+                alt="hero image"
+                width="1100"
+                height="600"
+                style={{ width: "100%" }}
+              />
+            </div>
+          </div>
         </Container>
       </main>
       <footer className="mt-12 py-9 border-t border-white-08">
