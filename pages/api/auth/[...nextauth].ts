@@ -106,7 +106,8 @@ export const nextAuthOption: AuthOptions = {
       }
 
       if (account?.type === "oauth") {
-        if (!user.emailVerified) {
+        user.email_verified = user.email_verified || !!user.emailVerified;
+        if (!user.email_verified) {
           return "/auth/error?error=unverified-email-address";
         }
         let existUser = await prisma.user.findFirst({
@@ -291,6 +292,8 @@ export const nextAuthOption: AuthOptions = {
 
           return { ...token, ...foundUser };
         }
+
+        console.log("token oauth =>", token);
 
         return {
           ...token,

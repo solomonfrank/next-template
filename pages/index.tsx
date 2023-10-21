@@ -11,6 +11,21 @@ import { Button } from "@/components/ui";
 import Container from "@/components/Container";
 import ForwardDirection from "@/components/icons/foward";
 import { classNames } from "@/libs/classNames";
+import { RampLogo } from "@/components/icons/ramp";
+import { LoomLogo } from "@/components/icons/loom";
+import { VercelLogo } from "@/components/icons/vercel";
+import { DescriptLogo } from "@/components/icons/descript";
+import { CashAppLogo } from "@/components/icons/cashapp";
+import { MercuryLogo } from "@/components/icons/mercury";
+import { RetoolLogo } from "@/components/icons/retool";
+import { ArcLogo } from "@/components/icons/arc";
+import { RaycastLogo } from "@/components/icons/raycast";
+import { RunWayLogo } from "@/components/icons/runway";
+import { RemoteLogo } from "@/components/icons/remote";
+import { SuperCellLogo } from "@/components/icons/supercell";
+import { Galaxy } from "../components/icons/galaxy";
+import { Zap } from "@/components/icons/zap";
+import { SemiCircle } from "@/components/icons/semicircle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +46,7 @@ export default function Home() {
                 <Logo />
               </Link>
             </div>
-            <ul className="flex gap-5 h-full  items-center py-3 [&_a]:text-sm [&_li]:ml-6">
+            <ul className="flex gap-3 h-full  items-center py-3 [&_a]:text-sm [&_li]:ml-6">
               <li>
                 <Link href="/">Features</Link>
               </li>
@@ -107,7 +122,7 @@ export default function Home() {
               className={classNames(
                 "relative bg-hero-gradient border border-white-08 bg-white bg-opacity-[0.01] rounded-lg",
                 inView ? "animate-rotate-out" : "[transform:rotationX(0)]",
-                "before:w-full before:h-full before:absolute before:bg-conic-hero-gradient before:[filter:blur(120px)]  before:opacity-0",
+                "before:w-full before:h-full before:absolute before:bg-conic-hero-gradient before:[filter:blur(120px)] before:opacity-0",
                 inView && "before:animate-glow-image"
               )}
               // className={`bg-hero-gradient border border-white-08 bg-white bg-opacity-[0.01] rounded-lg [transform:rotateX(${
@@ -132,7 +147,7 @@ export default function Home() {
               </svg>
               <Image
                 className={classNames(
-                  "z-10 relative transition-opacity delay-[600ms]",
+                  "z-10 relative transition-opacity delay-[700ms]",
                   inView ? "opacity-100" : "opacity-0"
                 )}
                 src="/hero.webp"
@@ -141,6 +156,116 @@ export default function Home() {
                 height="600"
                 style={{ width: "100%" }}
               />
+            </div>
+          </div>
+        </Container>
+
+        <Container className="py-[6.4rem] ">
+          <div>
+            <p className="text-center text-xl mb-12">
+              <span className="text-secondary">
+                Powering the world’s best product teams.
+              </span>
+              <br />
+              <span> From next-gen startups to established enterprises.</span>
+            </p>
+            <div className="flex flex-wrap justify-center max-w-[120rem] [&_svg]:max-w-[16rem] [&_svg]:basis-[calc(16.66%)] gap-x-8 gap-y-6">
+              <RampLogo className="" />
+              <LoomLogo />
+              <VercelLogo />
+              <DescriptLogo />
+              <CashAppLogo />
+              <SuperCellLogo />
+              <MercuryLogo />
+              <RetoolLogo />
+              <RemoteLogo />
+              <ArcLogo />
+              <RaycastLogo />
+              <RunWayLogo />
+            </div>
+          </div>
+        </Container>
+        <Container>
+          <div
+            className=" z-[-1] mask-galaxy relative my-[-12.8rem] mx-auto h-[60rem] overflow-hidden
+          before:absolute before:inset-0 before:bg-backgroundGalaxy before:opacity-[0.4] before:w-full before:h-full
+          
+          after:absolute after:top-1/2 after:-left-1/2 after:h-[142.8%] after:w-[200%] after:rounded-[50%] after:border-t after:border-[rgba(120,_119,_198,_0.4)] after:bg-background
+          "
+          >
+            <Galaxy />
+          </div>
+          <div className="text-center z-10">
+            <h2 className="text-[5.6rem] text-primary mb-7">
+              Unlike any tool
+              <br /> you’ve used before
+            </h2>
+            <p className="text-secondary text-xl mb-12 max-w-[68rem] mx-auto  text-center">
+              Designed to the last pixel and engineered with unforgiving
+              precision, Linear combines UI elegance with world-class
+              performance.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-6 mx-auto items-center justify-center overflow-hidden">
+            <div className=" relative border border-white-08 bg-unlikeBackground flex flex-col justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(66.66%-12px)]">
+              <div className=" w-full">
+                <h3 className="text-3xl text-primary">
+                  Built for your keyboard
+                </h3>
+                <p className="mt-4 text-secondary text-md  text-center">
+                  Fly through your tasks with rapid-fire keyboard shortcuts for
+                  everything. Literally everything.
+                </p>
+              </div>
+            </div>
+            <div className="relative border border-white-08  snap-center bg-unlikeBackground flex flex-col  justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(33.33%-12px)] overflow-hidden">
+              <div className="absolute mask-spiral">
+                <Zap />
+              </div>
+
+              <div className=" w-full">
+                <h3 className="text-3xl text-primary">Breathtakingly fast</h3>
+                <p className="mt-4 text-secondary text-md  text-center">
+                  Built for speed with 50ms interactions and real-time sync.
+                </p>
+              </div>
+            </div>
+
+            <div className=" group relative border border-white-08 overflow-hidden  bg-unlikeBackground flex flex-col justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(33.33%-12px)]">
+              <div className="absolute mask-spiral w-[130%] top-[-8rem]">
+                <SemiCircle />
+              </div>
+              <div className=" w-full ">
+                <Button
+                  variant="secondary"
+                  className="rounded-full translate-y-[30%] opacity-0 group-hover:opacity-100 transition-[transform,opacity]  group-hover:transform-none"
+                  size="small"
+                >
+                  Linear method
+                  <span>Product simple</span>
+                </Button>
+                <h3 className="text-3xl text-primary">
+                  Designed for modern software teams
+                </h3>
+                <p className="mt-4 text-secondary text-md  text-center">
+                  Comes with built-in workflows that create focus and routine.
+                </p>
+              </div>
+            </div>
+            <div className="relative  border border-white-08 snap-center bg-unlikeBackground flex flex-col  justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(66.66%-12px)] overflow-hidden">
+              <div className=" w-full">
+                <h3 className="text-3xl text-primary">
+                  Meet your command line
+                </h3>
+                <p className="mt-4 text-secondary text-md  text-center">
+                  Complete any action in seconds with the global command menu.
+                </p>
+              </div>
+
+              <div className="absolute mask-spiral">
+                <Zap />
+              </div>
             </div>
           </div>
         </Container>
