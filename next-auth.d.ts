@@ -1,5 +1,5 @@
 import type { User as PrismaUser } from "@prisma/client";
-import type { DefaultUser } from "next-auth";
+import type { DefaultUser, Profile as DefaultProfile } from "next-auth";
 
 declare module "next-auth" {
   interface User extends Omit<DefaultUser, "id"> {

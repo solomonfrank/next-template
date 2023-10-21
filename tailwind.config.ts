@@ -70,6 +70,10 @@ const config: Config = {
           "linear-gradient(to right bottom, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.38))",
         subtleMask:
           "radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))",
+        backgroundGalaxy:
+          "radial-gradient(circle at bottom center,#7877C6,transparent 70%)",
+        unlikeBackground:
+          "linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%)",
       },
       keyframes: {
         "fade-in": {
@@ -101,7 +105,7 @@ const config: Config = {
 
           "10%": {
             opacity: "1",
-            "animation-timing-function": "cubic-bezier(0.12,0.01,0.88, 0.99 )",
+            "animation-timing-function": "cubic-bezier(0.12,0.01,0.08,0.99)",
           },
           to: {
             opacity: "0.2",
@@ -118,12 +122,21 @@ const config: Config = {
             visibilty: "hidden",
           },
         },
+        zap: {
+          "0%, 9%, 11%, 100% ": {
+            fill: "transparent",
+          },
+          "10%": {
+            fill: "white",
+          },
+        },
       },
       animation: {
         "fade-in": "fade-in 1000ms var(--animation-delay, 0s) ease forwards",
         "rotate-out": "rotate-out 1400ms  ease forwards",
         "glow-image": "glow-image 4100ms  600ms ease-out forwards",
         "image-stroke": "image-stroke 1200ms ease-out forwards",
+        zap: "zap 2250ms calc(var(--index) * 20ms) linear infinite",
       },
     },
   },

@@ -2,6 +2,7 @@ import PageWrapper from "@/components/PageWrapper";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { signIn } from "next-auth/react";
 import {
   EmailInputField,
   PasswordInputField,
@@ -113,8 +114,16 @@ const Signup = () => {
             Already have an account? <Link href="/auth/login">Login</Link>
           </p>
         </div>
-        <div>
-          <Button type="button" prefixIcon={<BiLogoGoogle size={20} />}>
+        <div className="w-full">
+          <Button
+            className="w-full"
+            type="button"
+            onClick={async (e) => {
+              e.preventDefault();
+              await signIn("google", { callbackUrl: "" });
+            }}
+            prefixIcon={<BiLogoGoogle size={20} />}
+          >
             Sign up with Google
           </Button>
         </div>
