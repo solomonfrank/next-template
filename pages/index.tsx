@@ -26,6 +26,8 @@ import { SuperCellLogo } from "@/components/icons/supercell";
 import { Galaxy } from "../components/icons/galaxy";
 import { Zap } from "@/components/icons/zap";
 import { SemiCircle } from "@/components/icons/semicircle";
+import { Keyboard } from "@/components/icons/keyboard";
+import { KeyboardShortcut } from "@/components/KeyboardShortcut";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -208,7 +210,9 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap gap-6 mx-auto items-center justify-center overflow-hidden">
-            <div className=" relative border border-white-08 bg-unlikeBackground flex flex-col justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(66.66%-12px)]">
+            <div className=" relative border border-white-08 bg-unlikeBackground flex flex-col justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] max-w-[calc(66.66%-12px)] basis-[calc(66.66%-12px)]">
+              <KeyboardShortcut />
+
               <div className=" w-full">
                 <h3 className="text-3xl text-primary">
                   Built for your keyboard
@@ -232,8 +236,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className=" group relative border border-white-08 overflow-hidden  bg-unlikeBackground flex flex-col justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(33.33%-12px)]">
-              <div className="absolute mask-spiral w-[130%] top-[-8rem]">
+            <div className=" group relative border border-white-08 overflow-hidden   bg-unlikeBackground flex flex-col justify-end items-center min-h-[48rem] w-full p-12 text-center rounded-[4.8rem] basis-[calc(33.33%-12px)]">
+              <div className="absolute mask-spiral w-[130%] top-[-8rem] overflow-hidden">
                 <SemiCircle />
               </div>
               <div className=" w-full ">
