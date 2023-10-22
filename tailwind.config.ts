@@ -74,6 +74,7 @@ const config: Config = {
           "radial-gradient(circle at bottom center,#7877C6,transparent 70%)",
         unlikeBackground:
           "linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%)",
+        shortbackground: "",
       },
       keyframes: {
         "fade-in": {
