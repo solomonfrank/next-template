@@ -1657,12 +1657,12 @@ export const Keyboard = () => {
       ></rect>
       <defs>
         <linearGradient id="keyboard-stroke" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stop-color="#fff"></stop>
-          <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+          <stop offset="0" stopColor="#fff"></stop>
+          <stop offset="1" stopColor="#fff" stop-opacity="0"></stop>
         </linearGradient>
         <linearGradient id="board-stroke" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stop-color="#fff" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#fff"></stop>
+          <stop offset="0" stopColor="#fff" stop-opacity="0"></stop>
+          <stop offset="1" stopColor="#fff"></stop>
         </linearGradient>
       </defs>
     </svg>
