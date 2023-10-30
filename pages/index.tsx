@@ -28,6 +28,7 @@ import { Zap } from "@/components/icons/zap";
 import { SemiCircle } from "@/components/icons/semicircle";
 import { Keyboard } from "@/components/icons/keyboard";
 import { KeyboardShortcut } from "@/components/KeyboardShortcut";
+import { IssueTracking } from "@/components/IssueTracking";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -273,6 +274,8 @@ export default function Home() {
             </div>
           </div>
         </Container>
+
+        <IssueTracking />
       </main>
       <footer className="mt-12 py-9 border-t border-white-08">
         <Container className="flex justify-between">
